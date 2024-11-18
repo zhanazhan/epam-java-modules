@@ -1,12 +1,12 @@
-package com.epam.jmp.impl;
+package com.epam.jmp.cloud.bank.impl;
 
 import com.epam.jmp.dto.BankCard;
 import com.epam.jmp.dto.BankCardType;
 import com.epam.jmp.dto.User;
 import com.epam.jmp.dto.CreditBankCard;
 import com.epam.jmp.dto.DebitBankCard;
-import com.epam.jmp.service.Bank;
-import com.epam.jmp.utils.CardNumberGenerator;
+import com.epam.jmp.bank.service.Bank;
+import com.epam.jmp.cloud.bank.utils.CardNumberGenerator;
 
 public class BankImpl implements Bank {
     @Override

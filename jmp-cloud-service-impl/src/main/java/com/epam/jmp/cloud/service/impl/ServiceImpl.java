@@ -1,4 +1,4 @@
-package com.epam.jmp.impl;
+package com.epam.jmp.cloud.service.impl;
 
 import com.epam.jmp.dto.BankCard;
 import com.epam.jmp.dto.Subscription;
@@ -8,6 +8,8 @@ import com.epam.jmp.service.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 
 public class ServiceImpl implements Service {
@@ -55,5 +57,13 @@ public class ServiceImpl implements Service {
     @Override
     public List<User> getAllUsers() {
         return getAllSubscriptions().stream().map(Subscription::getUser).toList();
+    }
+
+    @Override
+    public List<Subscription> getAllSubscriptionsByCondition(Predicate<Subscription> predicate) {
+        return getAllSubscriptions()
+                .stream()
+                .filter(predicate)
+                .collect(Collectors.toList());
     }
 }

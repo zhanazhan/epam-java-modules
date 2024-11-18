@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 public interface Service {
 
@@ -17,13 +18,15 @@ public interface Service {
 
     List<User> getAllUsers();
 
+    List<Subscription> getAllSubscriptionsByCondition(Predicate<Subscription> predicate);
+
     /**
      * Calculates the average age of users in the list.
      *
-     * @param users the list of users
      * @return the average age as a double
      */
-    default double getAverageUsersAge(List<User> users) {
+    default double getAverageUsersAge() {
+        List<User> users = getAllUsers();
         if (users == null || users.isEmpty()) {
             throw new IllegalArgumentException("User list cannot be null or empty.");
         }
