@@ -5,11 +5,12 @@ import java.util.Objects;
 
 public class Subscription {
     private String bankcard;
-    private LocalDate startDate;
+    private LocalDate startDate = LocalDate.now();
+    private User user;
 
-    public Subscription(String bankcard, LocalDate startDate) {
+    public Subscription(String bankcard, User user) {
         this.bankcard = bankcard;
-        this.startDate = startDate;
+        this.user = user;
     }
 
     public String getBankcard() {
@@ -28,23 +29,32 @@ public class Subscription {
         this.startDate = startDate;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Subscription that = (Subscription) o;
-        return Objects.equals(bankcard, that.bankcard) && Objects.equals(startDate, that.startDate);
+        return Objects.equals(bankcard, that.bankcard) && Objects.equals(user, that.user) && Objects.equals(startDate, that.startDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bankcard, startDate);
+        return Objects.hash(bankcard, startDate, user);
     }
 
     @Override
     public String toString() {
         return "Subscription{" +
                 "bankcard='" + bankcard + '\'' +
+                "user='" + user + '\'' +
                 ", startDate=" + startDate +
                 '}';
     }
